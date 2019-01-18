@@ -16,6 +16,7 @@ public class ColorChanging : MonoBehaviour {
 
     void OnCollisionStay(Collision col)
     {
+        Debug.Log("Im being pressed");
         if(Input.GetKey(KeyCode.C))
         {
             playerMat.material = col.gameObject.GetComponent<Renderer>().material;
