@@ -18,8 +18,8 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
+  - ChameleonUI
+  - BirdUI
   - 
   - 
   - 
@@ -42,6 +42,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: UI
+    uniqueID: 3890658821
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
