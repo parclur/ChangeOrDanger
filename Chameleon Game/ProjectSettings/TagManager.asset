@@ -8,6 +8,8 @@ TagManager:
   - Player2
   - Bug
   - Home
+  - BirdWinsText
+  - PlayerWinsText
   layers:
   - Default
   - TransparentFX

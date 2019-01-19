@@ -38,9 +38,10 @@ public class EatBug : MonoBehaviour {
             bugText.text = "Bugs: " + currentHunger + "/" + maxHunger;
             Destroy(collision.gameObject);
             //hungerLevel.text = currentHunger.ToString() + "/" + maxHunger.ToString();
-
-            if(currentHunger == maxHunger)
+            Debug.Log("Current Hunger: " + currentHunger);
+            if(currentHunger >= maxHunger)
             {
+                Debug.Log("Ate all of the bugs");
                 ChameleonFull();
             }
         }

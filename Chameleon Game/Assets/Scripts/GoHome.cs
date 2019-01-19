@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 //This script is on the empty game object HomeBushes and is used to select the random home bush that the player must reach to win the game.
 public class GoHome : MonoBehaviour {
-
     GameObject[] homeBushes;
     GameObject finalHome;
     int index;

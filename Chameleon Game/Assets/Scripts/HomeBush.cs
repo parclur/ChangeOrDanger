@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class HomeBush : MonoBehaviour {
+    TextMeshProUGUI text;
 
     GoHome chooseHomeScript;
     GameObject thisHomeBush;
@@ -11,6 +13,8 @@ public class HomeBush : MonoBehaviour {
 
     void Start()
     {
+        text = GameObject.FindGameObjectWithTag("PlayerWinsText").GetComponent<TextMeshProUGUI>();
+
         chooseHomeScript = FindObjectOfType<GoHome>();
         thisHomeBush = this.gameObject;
     }
@@ -22,6 +26,8 @@ public class HomeBush : MonoBehaviour {
             if(thisHomeBush == chooseHomeScript.getFinalHome())
             {
                 chameleonWins = true;
+                text.enabled = true;
+                Time.timeScale = 0.0f;
                 Debug.Log("HomeBushScript/OnCollisionEnter/Chameleon wins");
             }
         }
