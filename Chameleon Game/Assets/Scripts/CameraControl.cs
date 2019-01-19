@@ -24,6 +24,7 @@ public class CameraControl : MonoBehaviour {
         //Used so that we only need one script for player cameras
         if (isChameleon)
         {
+            Debug.Log("chameleon Control");
             //Getting input
             xAxis = Input.GetAxis("p1_Joystick_Move_H");
             yAxis = Input.GetAxis("p1_Joystick_Move_V");
@@ -49,6 +50,7 @@ public class CameraControl : MonoBehaviour {
         }
         else
         {
+            Debug.Log("Bird Control");
             //Getting input
             xAxis = Input.GetAxis("p2_Joystick_Move_H");
             yAxis = Input.GetAxis("p2_Joystick_Move_V");
