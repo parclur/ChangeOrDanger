@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float speed = 5.0f;
     [SerializeField] float rotationSpeed = 200.0f;
-
+    [SerializeField] bool isChameleon = false;
     Rigidbody rb;
     // Use this for initialization
     void Start()
@@ -18,11 +18,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
-        {
             transform.Rotate(0, Input.GetAxis("p1_Horizontal") * Time.deltaTime * rotationSpeed, 0);
-            transform.Translate(0, 0, Input.GetAxis("p1_Vertical") * Time.deltaTime * speed);
-        }
-
+            transform.Translate(0, 0, -Input.GetAxis("p1_Vertical") * Time.deltaTime * speed);
+        
     }
 }
