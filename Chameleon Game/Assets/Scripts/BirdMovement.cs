@@ -12,6 +12,7 @@ public class BirdMovement : MonoBehaviour {
     [SerializeField] float rotationSpeed = 200.0f;
     [SerializeField] float turnSpeed = 50.0f;
     [SerializeField] bool isChameleon = false;
+    private int downwardsForce = 500;
     public Vector3 gravityForce = new Vector3(0f, -9.8f, 0f);
     Vector3 moveVector;
     bool canMove;
@@ -47,7 +48,6 @@ public class BirdMovement : MonoBehaviour {
 
                 transform.Rotate(-Vector3.left, -player.GetAxis("Move Vertical") * turnSpeed * Time.deltaTime);
             }
-            //transform.Translate(0, 0, player.GetAxis("Move Vertical") * Time.deltaTime * speed);
             transform.Rotate(0, player.GetAxis("Move Horizontal") * Time.deltaTime * rotationSpeed, 0, Space.World);
 
         }
@@ -55,14 +55,13 @@ public class BirdMovement : MonoBehaviour {
         {
             canMove = true;
         }
-            //rb.freezeRotation = true;
         }
     void OnCollisionEnter(Collision col)
     {
         if(col.gameObject.tag == "Home")
         {
             canMove = false;
-            rb.AddForce(transform.TransformDirection(gravityForce) * Time.deltaTime * 500, ForceMode.Acceleration);
+            rb.AddForce(transform.TransformDirection(gravityForce) * Time.deltaTime * downwardsForce, ForceMode.Acceleration);
         }
         
     }
