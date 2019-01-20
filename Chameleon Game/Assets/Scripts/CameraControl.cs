@@ -26,13 +26,16 @@ public class CameraControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        yAxis = player.GetAxis("Look Vertical");
+        xAxis = player.GetAxis("Look Horizontal");
+
         //Used so that we only need one script for player cameras
         if (isChameleon)
         {
             //Debug.Log("chameleon Control");
             //Getting input
-            xAxis = Input.GetAxis("p1_Joystick_Move_H");
-            yAxis = Input.GetAxis("p1_Joystick_Move_V");
+            //xAxis = Input.GetAxis("p1_Joystick_Move_H");
+            //yAxis = Input.GetAxis("p1_Joystick_Move_V");
 
             //Rotate camera around cameraRoot
             cameraRoot.transform.Rotate(0, xAxis * horRotationSpeed, 0);
@@ -57,8 +60,8 @@ public class CameraControl : MonoBehaviour {
         {
             //Debug.Log("Bird Control");
             //Getting input
-            xAxis = Input.GetAxis("p2_Joystick_Move_H");
-            yAxis = Input.GetAxis("p2_Joystick_Move_V");
+            //xAxis = Input.GetAxis("p2_Joystick_Move_H");
+            //yAxis = Input.GetAxis("p2_Joystick_Move_V");
 
             //Rotate camera around cameraRoot
             cameraRoot.transform.Rotate(0, xAxis * horRotationSpeed, 0);
