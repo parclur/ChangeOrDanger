@@ -12,12 +12,15 @@ public class BirdMovement : MonoBehaviour {
     [SerializeField] float rotationSpeed = 200.0f;
     [SerializeField] float turnSpeed = 50.0f;
     [SerializeField] bool isChameleon = false;
+    public Vector3 gravityForce = new Vector3(0f, -9.8f, 0f);
     Vector3 moveVector;
+    bool canMove;
     // Use this for initialization
     void Start () {
         player = ReInput.players.GetPlayer(playerId);
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        canMove = true;
     }
 
 
@@ -38,12 +41,29 @@ public class BirdMovement : MonoBehaviour {
         
         if (!isChameleon)
         {
-            transform.position += transform.forward * Time.deltaTime * speed;
+            if (canMove)
+            {
+                transform.position += transform.forward * Time.deltaTime * speed;
+
+                transform.Rotate(-Vector3.left, -player.GetAxis("Move Vertical") * turnSpeed * Time.deltaTime);
+            }
             //transform.Translate(0, 0, player.GetAxis("Move Vertical") * Time.deltaTime * speed);
             transform.Rotate(0, player.GetAxis("Move Horizontal") * Time.deltaTime * rotationSpeed, 0, Space.World);
 
         }
-        transform.Rotate(-Vector3.left, -player.GetAxis("Move Vertical") * turnSpeed * Time.deltaTime);
-        rb.freezeRotation = true;
+        if (player.GetButtonDown("P1 A Button"))
+        {
+            canMove = true;
+        }
+            //rb.freezeRotation = true;
+        }
+    void OnCollisionEnter(Collision col)
+    {
+        if(col.gameObject.tag == "Home")
+        {
+            canMove = false;
+            rb.AddForce(transform.TransformDirection(gravityForce) * Time.deltaTime * 500, ForceMode.Acceleration);
+        }
+        
     }
 }
