@@ -11,6 +11,7 @@ public class EatBug : MonoBehaviour {
     public int currentHunger;
     public int maxHunger;
     //public Text hungerLevel;
+    SoundManager soundManagerScript;
 
     public TextMeshProUGUI bugText;
 
@@ -22,6 +23,7 @@ public class EatBug : MonoBehaviour {
     {
         currentHunger = 0;
         maxHunger = 5;
+        soundManagerScript = FindObjectOfType<SoundManager>();
 
         bugText.text = "Bugs: " + currentHunger + "/" + maxHunger;
 
@@ -35,6 +37,7 @@ public class EatBug : MonoBehaviour {
         {
             Debug.Log("EatBugScript/OnCollisionEnter/Bug eated");
             currentHunger++;
+            soundManagerScript.PlayChameleonTongue();
             bugText.text = "Bugs: " + currentHunger + "/" + maxHunger;
             Destroy(collision.gameObject);
             //hungerLevel.text = currentHunger.ToString() + "/" + maxHunger.ToString();
